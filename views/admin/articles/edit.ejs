@@ -1,0 +1,56 @@
+<%- include("../../partials/header.ejs") %>
+
+    <%- include("../../partials/navbar.ejs") %>
+        <div class="container">
+            <hr>
+            <div class="card">
+                <div class="card-header">
+                    <h2>Editar artigo</h2>
+
+                </div>
+
+                <div class="card-body">
+                    <form action="/articles/update" method="post">
+                        <input class="form-control" value="<%= articles.title %>" type="text" name="title"
+                            placeholder="Defina o titulo">
+                        <br>
+                        <textarea id="article" placeholder="Informe o artigo aqui." name="body" class="form-control"
+                            cols="30" rows="10">
+                    <%- articles.body %>
+                </textarea>
+                        <br>
+                        <label for="Categoria">Categoria</label>
+                        <select name="category" class="form-control">
+
+                            <% categories.forEach(categories=>{
+                                if(categories.id == articles.categoryId){ %>
+                                <option style="background: rgb(58, 65, 63); color: aliceblue;" selected value="<%= categories.id %>">
+                                    <%= categories.title %>
+                                </option>
+                                <% }else{ %>
+
+                                    <option value="<%= categories.id %>">
+                                        <%= categories.title %>
+                                    </option>
+                                    <% } }) %>
+
+                        </select>
+                        <br>
+                        <input type="hidden" name="articleId" value="<%= articles.id %>">
+                        <button class="btn btn-success">Salvar alteração</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+        <%- include("../../partials/footer.ejs") %>
+            <script src="/tinymce/tinymce.min.js"></script>
+            <script>
+
+                tinymce.init({
+                    language: 'pt_BR',
+                    selector: "#article"
+                })
+
+            </script>

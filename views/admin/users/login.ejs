@@ -1,0 +1,22 @@
+<%- include("../../partials/header.ejs")  %>
+
+<div class="container">
+    <hr>
+    <div class="card mt-5">
+        <div class="card-header">
+           <h2>Acesso de usuario</h2> 
+        </div>
+        <div class="card-body">
+            <form method="post" action="/authenticate">
+                <label for="email">Email</label>
+                <input type="email" name="email" placeholder="Informe o email de acesso" class="form-control mb-5">
+                <label for="password">Senha</label>
+                <input type="password" name="password" placeholder="Digite a senha de acesso" class="form-control mb-5">
+                <button type="submit" class="btn btn-success btn-block">Salvar</button>
+            </form>
+        </div>
+    </div>
+</div> 
+
+
+<%- include("../../partials/footer.ejs")  %>
